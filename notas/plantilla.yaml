@@ -1,0 +1,138 @@
+# Puedo poner comentarios... con el cuadradito, a diferencia de JSON
+# Un fichero YAML puede contener varios documentos YAML. Otra maravilla del YAML!!! Ni XML tiene esto
+# Cada documento va precedido de la secuencia ---
+---
+# El primer documento no tiene por qué llevar los 3 guiones. Son opcionales para él
+---
+# En algunos casos (raros casos) vereis ... antes de los 3 guiones
+# Los ... significan final de documento
+# Los --- significan principio de documento
+...
+---
+# Aqui empieza otro documento
+# Este documento ha acabado
+---
+# Cada documento YAML contiene UN NODO
+# Un nodo puede ser de tipo ESCALAR o COLECCION
+---
+# Escalares:
+# Numeros:
+67
+---
+-178
+---
+0.98
+---
+-1.98
+---
+# Valor logico
+true    # True TRUE
+---
+false   # FALSE False
+--- 
+#Nota: CUIDADO !!!! IMPORTANTE
+# En ocasiones os encontrareis valores lógicos del tipo:
+yes
+YES
+Yes
+Y
+y
+No
+NO
+no
+n
+off
+Off
+OFF
+On
+ON
+on
+# en version 1.1 de YAML estaban admitidos
+# En version 1.2 de YAML (la actual) han tenido la imprudencia horrible de eliminarlos
+# Esos iempre en un lenguaje lo dejamos un par de versiones como DEPRECATED
+# Resultado, la mayor parte de parsers YAML siguen admitiendo esa sintaxis
+# Parser??? Un programa que es capaz de leer una sintaxis determinada
+---
+# Textos
+So'y "un #texto
+---
+"So'y \"un #texto"
+# Las contrabarras solo se procesan entre comillas dobles
+# \n Salto de linea
+# \t tabulador
+# \r Retorno de carro
+# \\ Solo una contrabarra
+# \" Comilla doble
+---
+'So''y "un #texto'
+
+---
+
+Soy una linea de texto
+
+Y yo otra
+---
+"Soy una linea de texto
+
+Y yo otra"
+---
+'Soy una linea de texto
+
+Y yo otra'
+
+---
+# Textos en bloque
+# Literal
+|+
+    Este es un texto
+       Que tiene varias lineas
+    
+    Incluso varios parrafos
+    Con caracteres raros "'#;\n
+---
+# Folded
+>
+    Este es un texto
+       Que tiene varias lineas
+    
+    Incluso varios parrafos
+    Con caracteres raros "'#;\n
+---
+~    # Valor nulo, desasignado
+---
+
+# Listas ordenadas
+# Secuencia ordenada de Nodos
+- item1
+- item2
+- item3
+---
+- item1
+- 17
+- True
+---
+- item1
+- 
+    - subitem 1
+    - subitem 2
+---
+- item1
+-   - subitem 1
+    - subitem 2
+-   - subitem 1
+    - subitem 2
+- item 3
+---
+[ "item 1", "item 2", "item 3", 7 , true]       # JSON tambien YAML
+---
+# Mapas
+# Secuencia no ordenada de Nodos, donde cada nodo es identificado por una clave
+clave1: 
+    subclave1: valor1
+    subclave2: valor2
+clave2: 
+    - item 1
+    - item 2
+---
+# ESQUEMA: Combinaciones permitidas de claves y tipos de datos que puedo usar.... ESTRUCTURA DEL DOCUMENTO
+# Cada programa define su propio esquema para YAML
