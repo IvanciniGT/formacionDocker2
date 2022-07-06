@@ -1,0 +1,14 @@
+# Monte un nginx y dentro mi web
+# GIT ->>>>> https://github.com/IvanciniGT/webEjemploAnsible
+# Necesito git y ... git clone https://github.com/IvanciniGT/webEjemploAnsible RUTA !!!!!
+FROM nginx:stable
+
+RUN apt update && apt install git -y
+
+RUN rm -rf /usr/share/nginx/html
+
+RUN git clone https://github.com/IvanciniGT/webEjemploAnsible /usr/share/nginx/html
+
+# ME HUELE A CHAPUZA GIGANTESCA !!!!!!!! 
+# SOLUCION: GENERACION DE IMAGENES MULTI-STAGE
+

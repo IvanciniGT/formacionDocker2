@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+    minginx:
+        container_name: prueba1
+        image:          mi_imagen_nginx:latest    
+        ports:
+                      - 8080:80
+        volumes:
+                      - /home/ubuntu/environment/curso/dockercompose/mi_imagen_nginx:/usr/share/nginx/html
