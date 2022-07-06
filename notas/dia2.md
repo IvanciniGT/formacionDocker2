@@ -256,3 +256,11 @@ que pueden ejecuatr conteendores: DOCKER SWARM
     NO LO USA NI EL TATO !!!!!!
 Si quiero controlar un cluster de contenedores.... cual es la herramienta KUBERNETES
     USA EL TATO y TODA LA FAMILIA DEL TATO !!!!!!
+
+
+sudo su -
+sysctl -w vm.max_map_count=524288
+sysctl -w fs.file-max=131072
+ulimit -n 131072
+ulimit -u 8192
+exit
