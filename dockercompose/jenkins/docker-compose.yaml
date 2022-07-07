@@ -8,11 +8,13 @@ services:
         ports:
                             - 8080:8080 
                             - 50000:50000 
+        user:               root
         volumes:
                             - jenkins_home:/var/jenkins_home 
                             #- /home/ubuntu/environment/datos/jenkins:/var/jenkins_home 
                             # mkdir -p /home/ubuntu/environment/datos/jenkins
                             # chmod 777 -R /home/ubuntu/environment/datos
-                            
+                            - /var/run/docker.sock:/var/run/docker.sock     # Inyecta el socket de docker
+                            - /usr/bin/docker:/usr/bin/docker               # Inyecta el binario de docker
 volumes:
     jenkins_home:

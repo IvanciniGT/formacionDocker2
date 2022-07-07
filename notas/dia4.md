@@ -217,3 +217,30 @@ Sonarqube hace el análisis de forma asincrona . cuando acaba llama a Jenkins, p
 Jenkins     http://172.31.14.171:8080
 SonarQube   http://172.31.14.171:8081
 squ_605ae06cd5a7437362d06ddbdb8c71e19be24a6d
+
+Tenemos un contendor con Jenkins....
+Pero ese contenedor quiere crear nuevos contenedores
+
+Los contenedores donde se crean? a qué nivel? os host
+
+
+Docker in Docker 
+    1º Necesitamos inyectar el ejecutable de docker del host dentro del contenedor
+    2º Necesito inyectar el socket del proceso que está corriendo a nivel del host para docker
+    
+Selenium
+    python -> Programa python -> Hub ->      Driver -> Navegador (firefox)
+                                             Driver -> Navegaro2 (edge)
+                            
+    Programa que comunica con el navegador en un puerto que abre el proceso del navegador
+    y le da instrucciones al navegador
+    
+    Programa que habla con el driver Python, Java, C#, Ruby
+    
+
+Python -> Programa
+Hub PUERTO
+Contenedor Firefox < Driver PUERTO
+Contenedor edge < driver
+
+
