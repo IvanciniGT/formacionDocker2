@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+    
+    jenkins:
+        container_name:     jenkins
+        image:              jenkins/jenkins:lts-jdk11
+        ports:
+                            - 8080:8080 
+                            - 50000:50000 
+        volumes:
+                            - jenkins_home:/var/jenkins_home 
+                            #- /home/ubuntu/environment/datos/jenkins:/var/jenkins_home 
+                            # mkdir -p /home/ubuntu/environment/datos/jenkins
+                            # chmod 777 -R /home/ubuntu/environment/datos
+                            
+volumes:
+    jenkins_home:

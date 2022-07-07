@@ -1,0 +1,79 @@
+pipeline {
+    
+    agent {
+        docker {
+            image "maven:3.6-jdk-11"
+        }
+    } 
+    
+    stages {
+        
+        stage('1-Compilacíon/empaquetado básico'){
+            steps {
+                echo 'Lo que necesite hacer para compilar mi código'
+                sh 'mvn -f dockerfile/java/pom.xml compile'
+            }
+            agent {
+                docker {
+                    image "maven:3.6-jdk-11"
+                }
+            } 
+        }
+        
+        stage('2-Pruebas unitarias'){
+            steps {
+                echo 'Realizar pruebas unitarias'
+                sh 'mvn  -f dockerfile/java/pom.xml test'
+            }
+            post{
+                always {
+                    echo 'Guardo el informe de pruebas unitarias'
+                    junit 'dockerfile/java/target/surefire-reports/*.xml'
+                }
+            }
+            agent {
+                docker {
+                    image "maven:3.6-jdk-11"
+                }
+            } 
+        }
+        stage('3-Pruebas estáticas de código'){
+            steps {
+                echo 'Llamar a SonarQube'
+                withSonarQubeEnv('sonarqube'){
+                    sh '''
+                    mvn  -f dockerfile/java/pom.xml sonar:sonar \
+                        -Dsonar.projectKey=proyectoMaven
+                    '''
+                }
+            }
+            post{
+                always {
+                    echo 'Mirar el resultado del QualityGate de SonarQube'
+                    timeout(time: 1, unit: 'HOURS') { 
+                        waitForQualityGate abortPipeline: true
+                    }
+                }
+            }
+        }
+        
+        stage('4-Empaquetar la app para su posible ejecución'){
+            steps {
+                echo 'Empaqueto'
+                sh 'mvn  -f dockerfile/java/pom.xml  package'
+            }
+            post{
+                success {
+                    echo 'Guardo el empaquetado: war'
+                    archiveArtifacts artifacts: 'dockerfile/java/target/*.war', followSymlinks: false
+                }
+            }
+        }
+        
+    }
+    post{
+        always {
+                sh 'mvn -f dockerfile/java/pom.xml  clean' 
+        }
+    }
+}

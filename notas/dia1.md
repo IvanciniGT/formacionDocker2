@@ -22,6 +22,8 @@ Independientement del software que corra dentro de un contenedor, yo siempre lo 
 - Paro
 - Reinicio
 - Veo sus logs
+- Instalo
+- Desinstalo
                                                                
                                                                
 ## Imágen de contenedor
