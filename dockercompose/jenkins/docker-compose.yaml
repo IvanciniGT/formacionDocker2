@@ -18,3 +18,19 @@ services:
                             - /usr/bin/docker:/usr/bin/docker               # Inyecta el binario de docker
 volumes:
     jenkins_home:
+
+# No usar la imagen por defecto de JENKINS
+# Sino:
+#   Crear nuestra propia imagen, con un Dockerfile partiendo de la imagen oficial de jenkins
+#   Dentro de esa imagen: 
+#       Crear el grupo docker: $ groupadd docker
+#       Añadir el usuario de jenkins a el grupo de docker: $ sudo usermod -aG docker jenkins
+
+
+# FROM jenkins/jenkins:lts-jdk11
+# USER root
+# Este grupo existe en el host, por el hecho de tener instalado docker
+# RUN groupadd docker
+
+# RUN usermod -aG docker jenkins
+# USER jenkins
