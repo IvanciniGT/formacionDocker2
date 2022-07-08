@@ -31,7 +31,8 @@ RUN [ -f "requirements.txt" ] && pip install --no-cache-dir -r requirements.txt 
 # Ejecuta durante el momento de crear la imagen un comando.... La imagen que salga, ya lleva esto configurado de serie
 
 ENV MAIN_PROGRAM=$MAIN_PROGRAM
-
+RUN mkdir /instantaneas
+          
 # Opcion 1
 #CMD [ "/bin/sh", "-c", "python $MAIN_PROGRAM" ]
 # Opcion 2
@@ -40,3 +41,8 @@ CMD [ "/init.sh"]
 # creado en el futuro desde esta imagen de contenedor que estamos generando
 
 # NO NOS VA A FUNCIONAR NI DE COÑA !!!!!
+
+# Aviso a navegantes !!!!
+# Te puede interesar montar esa carpeta como un volumen
+VOLUME [/instantaneas]
+# Esto lo hacemos siempre!!!!

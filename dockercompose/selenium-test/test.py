@@ -39,7 +39,9 @@ class Tester(unittest.TestCase):
         texto=driver.find_element(By.XPATH,"//h2").text
         #---
         self.assertEquals("Hola Jenkins!",texto)
-        driver.save_screenshot("screenshot.png")
+        
+        driver.get("https://phoenixnap.com/kb/install-docker-compose-ubuntu")
+        driver.save_screenshot("/instantaneas/screenshot.png")
 
     def tearDown(self):
         self.driver.quit()

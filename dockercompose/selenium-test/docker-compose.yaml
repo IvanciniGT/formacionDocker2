@@ -27,3 +27,11 @@ services:
             args:
                 #SOURCE_PATH: .
                 MAIN_PROGRAM: test.py
+        volumes:
+            - /home/ubuntu/environment/datos/instantaneas:/instantaneas
+            #- instantaneas:/instantaneas
+            # $ mkdir /home/ubuntu/environment/datos/instantaneas
+            # $ chmod 777 /home/ubuntu/environment/datos/instantaneas
+            
+#volumes:
+#    instantaneas:
