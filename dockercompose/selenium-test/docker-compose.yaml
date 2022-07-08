@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+    miapp:
+        container_name: miapp
+        image: miapp:desarrollo # Solamente comprueba que mi host tenga la imagen que se llame python:3.9
+                                # No mira el shar (hash) de la imagen comparandola con docker hub o el registry de turno
+                                # Si hubiera un cambio en la imagen NO SE DESCARGARIA si ya tengo una
+                                # $ docker-compose pull # Fuerza que se descargue la última imagen que exista, aunque ya tenga otra yo descargada
+                                
+                                
+                                # En este caso, la imagen python:3.9, no la estamos declarando aqui
+                                # La declaramos en el dockerfile
+
+                                # Cuando se genera la imagen de contenedor mia, con el dockerfile????
+                                # Cuando hacemos el docker-compose up? se genera ahí la imagen de contenedor mia???
+                                #       Si se genera, siempre que no exista ya
+                                # Y si existe, pero he hecho un cambio en el dockerfile? NO 
+                                # Para forzarlo, usariamos el docker-compose build 
+                                # Y al hacer eso se descargaría la nueva imagen python:3.9 que tenemos definida en el dockerfile?
+                                #       NO
+                                # Esto lo forzaríamos con un docker-compose build --pull
+
+        build: 
+            context: .
+            args:
+                #SOURCE_PATH: .
+                MAIN_PROGRAM: test.py

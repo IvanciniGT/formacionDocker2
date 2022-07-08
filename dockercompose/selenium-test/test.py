@@ -1,3 +1,15 @@
+# python test.py
+# pip install selenium
+#               requirements.txt
+
+
+# 1 Arrancar el grid
+# 2 Crear una imagen de conteendor con python3
+#       Que tenga dentro mi programa 
+#       y las librerias que hacen falta
+#       Que ejecute mi programa
+# 3 Crear un conteendor (docker-compose)
+#   que ejecute el programa
 import time
 import unittest
 
@@ -23,7 +35,9 @@ class Tester(unittest.TestCase):
         driver = self.driver
         driver.get("http://172.31.14.171:8082/webapp/")
         time.sleep(3)
+        #---
         texto=driver.find_element(By.XPATH,"//h2").text
+        #---
         self.assertEquals("Hola Jenkins!",texto)
         driver.save_screenshot("screenshot.png")
 

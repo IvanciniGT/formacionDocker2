@@ -33,6 +33,9 @@ especificación POSIX, en las cuales ya se encuentra INSTALADO un(os) programa(s
                          Open Container Initiative (Docker Inc.)
 Además una imagen de contenedor lleva consigo una serie de configuraciones:
     - El proceso que se tiene que levantar al iniciar un contenedor basado en esta imagen: CMD Command
+    - Variables de entorno
+    - Que volumenes sería conveniente montar
+    - Que puertos se exponen
 
 A cambiado el mundo de las tecnologías de la información... y ha salpicado a todos los perfiles del mundo IT:
 - desarrolladores
